@@ -24,7 +24,7 @@ export default class TextureSplattingMaterial extends THREE.ShaderMaterial {
   } = {}) {
     if (Math.max(1, colorMaps.length) !== alphaMaps.length + 1) {
       throw Error(
-        `There must be exactly one alpha-maps less than there are color-maps, found ${colorMaps.length} color-maps and ${alphaMaps.length} alpha-maps.`
+        `There must be exactly one alpha-map less than there are color-maps, found ${colorMaps.length} color-maps and ${alphaMaps.length} alpha-maps.`
       );
     }
 
@@ -168,6 +168,9 @@ const fragmentShader = (length) => {
   texture2D(colorMaps[${i}], colorMapsUvs[${i}]),
   texture2D(alphaMaps[${i - 1}], vUv).r
 )`;
+
+      console.log(expression);
+
   }
 
   return glsl`
